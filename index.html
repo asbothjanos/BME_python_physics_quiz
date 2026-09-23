@@ -123,7 +123,7 @@
                             <p><strong>${header}</strong></p>${codeBlock}
                             <fieldset>
                                 ${item.opts.map(opt => `
-                                    <label style="white-space: pre-wrap;">
+                                    <label style="white-space: pre-wrap; margin-bottom: 0.25rem;">
                                         <input type="radio" name="q${idx}" value="${opt[0]}"> ${opt}
                                     </label>
                                 `).join('')}
