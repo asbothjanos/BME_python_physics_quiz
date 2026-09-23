@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Engineering - Python Quizzes</title>
+    <!-- Lightweight CSS framework for clean, native-looking UI without writing custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+<body class="container" style="padding-top: 20px;">
+
+    <header>
+        <hgroup>
+            <h1>Introduction to Mechanics & Python</h1>
+            <p>Interactive Practice Quizzes</p>
+        </hgroup>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showTab('home')">🏠 Overview</a></li>
+                <li><a href="#" onclick="showTab('b1')">Batch 1</a></li>
+                <li><a href="#" onclick="showTab('b2')">Batch 2</a></li>
+                <li><a href="#" onclick="showTab('b3')">Batch 3</a></li>
+                <li><a href="#" onclick="showTab('b4')">Batch 4</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="app"></main>
+
+    <script>
+        const quizzes = {
+            b1: {
+                title: "Batch 1: Basic Python",
+                desc: "Arithmetic, lists, conditionals, and indentation.",
+                data: [
+                    { q: "Q1: What is the result of 7 / 2 in Python?", opts: ["A) 3", "B) 3.5", "C) 3.0", "D) 4"], ans: "B", hint: "Division / always yields a float.", exp: "7 / 2 evaluates to 3.5." },
+                    { q: "Q2: What is the value of x after x = 2 + 3 * 4**2?", opts: ["A) 50", "B) 80", "C) 144", "D) 400"], ans: "A", hint: "Exponentiation happens before multiplication.", exp: "4**2 = 16, 3*16 = 48, 2+48 = 50." },
+                    { q: "Q3: Given vals = [10.0, 20.0, 30.0], which index accesses 30.0?", opts: ["A) vals[3]", "B) vals[2]", "C) vals[1]", "D) vals[30.0]"], ans: "B", hint: "Indexing starts at 0.", exp: "vals[0] is 10.0, vals[1] is 20.0, vals[2] is 30.0." },
+                    { q: "Q4: What is len([1.5, 2.5, 3.5])?", opts: ["A) 2", "B) 3", "C) 4", "D) Error"], ans: "B", hint: "len() counts list items.", exp: "Returns 3, the total number of items." },
+                    { q: "Q5: Value of pos after pos = [1.0, 2.0]; pos.append(3.0)?", opts: ["A) [3.0, 1.0, 2.0]", "B) [1.0, 2.0, 3.0]", "C) [1.0, 2.0]", "D) [6.0]"], ans: "B", hint: ".append() attaches items to the end.", exp: "Appends 3.0 to the list tail." },
+                    { q: "Q6: What prints?\nv = 12.0\nif v > 15.0:\n    print('Fast')\nelif v > 10.0:\n    print('Medium')\nelse:\n    print('Slow')", opts: ["A) Fast", "B) Medium", "C) Slow", "D) Nothing"], ans: "B", hint: "Executes the first true condition.", exp: "v > 10.0 is true first, printing 'Medium'." },
+                    { q: "Q7: Why does this fail?\nx = 5.0\nif x > 0:\nprint('Positive')", opts: ["A) Single quotes needed", "B) Indentation required", "C) Must be integer", "D) Missing colon"], ans: "B", hint: "Code blocks require indentation.", exp: "Statements inside if must be indented." },
+                    { q: "Q8: Type of result for 5 + 2.0?", opts: ["A) int (7)", "B) float (7.0)", "C) str ('52.0')", "D) TypeError"], ans: "B", hint: "Int + Float yields Float.", exp: "5 is promoted to 5.0." },
+                    { q: "Q9: Which checks if x is between 0.0 and 0.5 inclusive?", opts: ["A) 0.0 <= x <= 0.5", "B) 0.0 <= x and <= 0.5", "C) 0.0 <= x & 0.5", "D) x = 0.0 to 0.5"], ans: "A", hint: "Chained comparisons are allowed.", exp: "0.0 <= x <= 0.5 is valid Python syntax." },
+                    { q: "Q10: Given lst = [0, 10, 20, 30, 40], what is lst[-1]?", opts: ["A) 0", "B) 40", "C) IndexError", "D) -1"], ans: "B", hint: "Negative indices count from the end.", exp: "lst[-1] returns the last item." }
+                ]
+            },
+            b2: {
+                title: "Batch 2: Loops & Functions",
+                desc: "For/while loops, parameters, return statements, and scope.",
+                data: [
+                    { q: "Q1: Result of s = 0; for i in range(1, 4): s = s + i?", opts: ["A) 10", "B) 6", "C) 4", "D) 3"], ans: "B", hint: "range(1, 4) gives 1, 2, 3.", exp: "1 + 2 + 3 = 6." },
+                    { q: "Q2: Executions of while t < 1.0: t = t + 0.2 starting at t = 0.0?", opts: ["A) 4", "B) 5", "C) 6", "D) Infinite"], ans: "B", hint: "t takes 0.0, 0.2, 0.4, 0.6, 0.8.", exp: "Runs 5 times before t reaches 1.0." },
+                    { q: "Q3: Correct function definition header?", opts: ["A) function getforce(m, a):", "B) def getforce(m, a):", "C) def getforce(m, a)", "D) create getforce(m, a):"], ans: "B", hint: "Starts with def and ends with :.", exp: "def getforce(m, a): is correct." },
+                    { q: "Q4: Output of def getke(m, v): return 0.5 * m * v**2; print(getke(2.0, 3.0))?", opts: ["A) 9.0", "B) 18.0", "C) 3.0", "D) None"], ans: "A", hint: "0.5 * 2.0 * 3.0**2.", exp: "0.5 * 2.0 * 9.0 = 9.0." },
+                    { q: "Q5: What is returned if a function lacks a return statement?", opts: ["A) 0", "B) None", "C) SyntaxError", "D) False"], ans: "B", hint: "Python returns a blank object.", exp: "Functions return None by default." },
+                    { q: "Q6: Values assigned to step in for step in range(5):?", opts: ["A) 1, 2, 3, 4, 5", "B) 0, 1, 2, 3, 4", "C) 0, 1, 2, 3, 4, 5", "D) 1, 2, 3, 4"], ans: "B", hint: "Starts at 0, length 5.", exp: "0, 1, 2, 3, 4." },
+                    { q: "Q7: Speed v after two steps? v = 0.0; g = 9.8; dt = 0.1; v = v + g * dt", opts: ["A) 0.98", "B) 1.96", "C) 19.6", "D) 0.0"], ans: "B", hint: "Increases by 0.98 per step.", exp: "Step 1: 0.98; Step 2: 1.96." },
+                    { q: "Q8: Where does temp exist? def convert(c): temp = c + 273.15; return temp", opts: ["A) Globally", "B) Inside convert function only", "C) Everywhere after print", "D) In all modules"], ans: "B", hint: "Defined inside function scope.", exp: "temp is local to convert." },
+                    { q: "Q9: Statement to immediately exit a loop?", opts: ["A) continue", "B) break", "C) stop", "D) exit"], ans: "B", hint: "Terminates execution instantly.", exp: "break exits the loop." },
+                    { q: "Q10: Command inside while t < 1.0: to advance time?", opts: ["A) t = t + dt", "B) dt = dt + t", "C) t = t * dt", "D) break(t)"], ans: "A", hint: "Increment time variable t by dt.", exp: "t = t + dt advances time toward 1.0." }
+                ]
+            },
+            b3: {
+                title: "Batch 3: 1D NumPy Arrays",
+                desc: "Vectorized arithmetic and array slicing.",
+                data: [
+                    { q: "Q1: Create 100 points between 0.0 and 5.0 inclusive?", opts: ["A) np.arange(0.0, 5.0, 100)", "B) np.linspace(0.0, 5.0, 100)", "C) np.linspace(0.0, 100, 5.0)", "D) np.array(0.0, 5.0, 100)"], ans: "B", hint: "np.linspace(start, stop, count).", exp: "np.linspace generates 100 points." },
+                    { q: "Q2: Result of y = 2.0 * x**2 + 1.0 for x = np.array([1.0, 2.0, 3.0])?", opts: ["A) [3.0, 9.0, 19.0]", "B) [5.0, 9.0, 13.0]", "C) [3.0, 8.0, 15.0]", "D) [4.0, 16.0, 36.0]"], ans: "A", hint: "Element-wise calculation.", exp: "2(1^2)+1=3, 2(2^2)+1=9, 2(3^2)+1=19." },
+                    { q: "Q3: Result of pos[1:4] for pos = np.array([10, 20, 30, 40, 50])?", opts: ["A) [10, 20, 30]", "B) [20, 30, 40]", "C) [20, 30, 40, 50]", "D) [10, 20, 30, 40]"], ans: "B", hint: "Slices from index 1 to 3.", exp: "Returns items at indices 1, 2, 3." },
+                    { q: "Q4: Value of a[0] after a = np.array([1, 2, 3]); b = a; b[0] = 99?", opts: ["A) 1", "B) 99", "C) 0", "D) Error"], ans: "B", hint: "b = a shares array memory.", exp: "Modifying b modifies a." },
+                    { q: "Q5: Vectorized kinetic energy formula K = 0.5 * m * v**2?", opts: ["A) ek = 0.5 * m * v2", "B) ek = 0.5 * m * v**2", "C) ek = 1/2 * m * v^2", "D) ek = 0.5 * m * v * 2"], ans: "B", hint: "Use ** for array powers.", exp: "Operates element-wise over array v." },
+                    { q: "Q6: Compute position differences x_{i+1} - x_i using slicing?", opts: ["A) pos[1:] - pos[:-1]", "B) pos[1:] - pos[0:]", "C) pos[:-1] - pos[1:]", "D) pos[1:50] - pos[0:50]"], ans: "A", hint: "Subtract shifted array slices.", exp: "Aligns x_{i+1} with x_i." },
+                    { q: "Q7: Create an array of 5 floating-point zeros?", opts: ["A) np.zeros(5)", "B) np.empty(5, fill=0)", "C) np.array(0, 0, 0, 0, 0)", "D) np.nulls(5)"], ans: "A", hint: "Use np.zeros().", exp: "Generates 5 float zeros." },
+                    { q: "Q8: Calculate spacing dt for t = np.linspace(0.0, 10.0, 101)?", opts: ["A) dt = t[1] - t[0]", "B) dt = t[100] - t[1]", "C) dt = len(t) / 10.0", "D) dt = t[0] - t[1]"], ans: "A", hint: "Difference between first two indices.", exp: "t[1] - t[0] gives dt." },
+                    { q: "Q9: Trajectory y(t) = v0 * t - 0.5 * g * t**2 for array t?", opts: ["A) y = v0 * t - 0.5 * g * t**2", "B) y = v0 * t - 1/2 * g * t2", "C) y = v0 * t - 0.5 * g * t^2", "D) y = v0 * t - 0.5 * g * t * 2"], ans: "A", hint: "Use * and ** operators.", exp: "Executes vectorized array arithmetic." },
+                    { q: "Q10: Compute relative errors between ynum and yana?", opts: ["A) np.abs(ynum - yana) / np.abs(yana)", "B) (ynum - yana) * 100", "C) np.abs(ynum - yana) / np.abs(ynum)", "D) np.sqrt(ynum**2 - yana**2)"], ans: "A", hint: "|Difference| / |Analytical|.", exp: "Calculates element-wise relative error." }
+                ]
+            },
+            b4: {
+                title: "Batch 4: Matplotlib Plotting",
+                desc: "Line plots, labels, titles, legends, and styling.",
+                data: [
+                    { q: "Q1: Standard import alias for Matplotlib pyplot?", opts: ["A) import matplotlib as plt", "B) import matplotlib.pyplot as plt", "C) import pyplot as plt", "D) from matplotlib import plot"], ans: "B", hint: "Imports pyplot submodule as plt.", exp: "import matplotlib.pyplot as plt." },
+                    { q: "Q2: Plot position x vs time t with labels?", opts: ["A) plt.plot(t, x); plt.xlabel('Time (s)'); plt.ylabel('Position (m)')", "B) plt.line(t, x)", "C) plt.plot(x, t)", "D) plt.draw(t, x)"], ans: "A", hint: "x-axis goes first, then y-axis.", exp: "plt.plot(t, x) sets t on x-axis and x on y-axis." },
+                    { q: "Q3: Plot numerical points as discrete red circles?", opts: ["A) plt.plot(t, y, 'r-')", "B) plt.plot(t, y, 'ro')", "C) plt.plot(t, y, 'red-dot')", "D) plt.scatter_line(t, y, 'r')"], ans: "B", hint: "'r' = red, 'o' = circles.", exp: "'ro' formats discrete red circular markers." },
+                    { q: "Q4: Format string for a blue dashed line?", opts: ["A) 'b--'", "B) 'blue-dashed'", "C) 'b-dash'", "D) 'dashed-blue'"], ans: "A", hint: "'b' = blue, '--' = dashed line.", exp: "'b--' specifies blue dashed lines." },
+                    { q: "Q5: Command required to display plot legend labels?", opts: ["A) plt.showlegend()", "B) plt.legend()", "C) plt.display()", "D) plt.label()"], ans: "B", hint: "Renders active curve labels.", exp: "plt.legend() displays the key." },
+                    { q: "Q6: Function to set a title above a plot?", opts: ["A) plt.header()", "B) plt.title()", "C) plt.settitle()", "D) plt.toplabel()"], ans: "B", hint: "plt.title('text').", exp: "Sets the figure top title." },
+                    { q: "Q7: Command to restrict horizontal x-axis range from 0 to 10?", opts: ["A) plt.xlim(0, 10)", "B) plt.setx(0, 10)", "C) plt.xaxis(0, 10)", "D) plt.xrange(0, 10)"], ans: "A", hint: "Short for x limits.", exp: "plt.xlim(min, max) adjusts x boundaries." },
+                    { q: "Q8: Save current figure to an image file 'plot.png'?", opts: ["A) plt.export('plot.png')", "B) plt.savefig('plot.png')", "C) plt.save('plot.png')", "D) plt.write('plot.png')"], ans: "B", hint: "Short for save figure.", exp: "plt.savefig() writes image to disk." },
+                    { q: "Q9: Command to display major gridlines on axes?", opts: ["A) plt.grid(True)", "B) plt.background('grid')", "C) plt.showgrid()", "D) plt.lines(True)"], ans: "A", hint: "Pass True to grid().", exp: "plt.grid(True) toggles gridlines." },
+                    { q: "Q10: Effect of two consecutive plt.plot() calls before plt.show()?", opts: ["A) Overwrites first plot", "B) Layers both curves on same axes", "C) Throws error", "D) Opens 2 windows"], ans: "B", hint: "Plots accumulate automatically.", exp: "Overlays both curves on the same plot." }
+                ]
+            }
+        };
+
+        function showTab(id) {
+            const app = document.getElementById('app');
+            if (id === 'home') {
+                app.innerHTML = `
+                    <h2>Quiz Modules</h2>
+                    <div class="grid">
+                        ${Object.entries(quizzes).map(([k, v]) => `
+                            <article>
+                                <h3>${v.title}</h3>
+                                <p>${v.desc}</p>
+                                <button onclick="showTab('${k}')">Start Quiz (${v.data.length} Qs)</button>
+                            </article>
+                        `).join('')}
+                    </div>`;
+            } else {
+                const qObj = quizzes[id];
+                app.innerHTML = `
+                    <h2>${qObj.title}</h2>
+                    <p>${qObj.desc}</p>
+                    ${qObj.data.map((item, idx) => `
+                        <article>
+                            <p><strong>${item.q.replace(/\n/g, '<br>')}</strong></p>
+                            <fieldset>
+                                ${item.opts.map(opt => `
+                                    <label>
+                                        <input type="radio" name="q${idx}" value="${opt[0]}"> ${opt}
+                                    </label>
+                                `).join('')}
+                            </fieldset>
+                            <div class="grid">
+                                <button onclick="check('${id}',${idx})">Check</button>
+                                <button class="secondary" onclick="toggle('h-${idx}')">💡 Hint</button>
+                            </div>
+                            <p id="h-${idx}" style="display:none; color: var(--pico-color-amber-500);">💡 <strong>Hint:</strong> ${item.hint}</p>
+                            <p id="f-${idx}" style="display:none;"></p>
+                        </article>
+                    `).join('')}
+                `;
+            }
+        }
+
+        function toggle(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function check(batchId, idx) {
+            const item = quizzes[batchId].data[idx];
+            const sel = document.querySelector(`input[name="q${idx}"]:checked`);
+            const fb = document.getElementById(`f-${idx}`);
+            fb.style.display = 'block';
+
+            if (!sel) {
+                fb.innerHTML = '⚠️ <em>Please select an option first.</em>';
+                return;
+            }
+
+            if (sel.value === item.ans) {
+                fb.innerHTML = `✅ <strong>Correct!</strong> ${item.exp}`;
+            } else {
+                fb.innerHTML = `❌ <strong>Incorrect.</strong> Correct answer is <strong>${item.ans}</strong>. ${item.exp}`;
+            }
+        }
+
+        showTab('home');
+    </script>
+</body>
+</html>
