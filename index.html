@@ -13,21 +13,50 @@
             border: none !important;
         }
         fieldset label {
-            margin-bottom: 0.2rem !important;
-            padding: 0 !important;
+            margin-bottom: 0.35rem !important;
+            padding: 0.4rem 0.6rem !important;
             display: flex !important;
             align-items: center !important;
             line-height: 1.4 !important;
             white-space: pre-wrap !important;
+            border-radius: 6px !important;
+            border: 1px solid rgba(0,0,0,0.1) !important;
+            transition: transform 0.1s ease, filter 0.1s ease !important;
+        }
+        fieldset label:hover {
+            filter: brightness(0.95);
+            cursor: pointer;
         }
         fieldset input[type="radio"] {
-            margin: 0 0.5rem 0 0 !important;
+            margin: 0 0.6rem 0 0 !important;
             vertical-align: middle !important;
             flex-shrink: 0 !important;
         }
         pre code {
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
             font-size: 0.9em;
+        }
+
+        /* Colored backgrounds for options A, B, C, D */
+        fieldset label:nth-of-type(1) {
+            background-color: #ffe6e6 !important; /* A - Red */
+            border-color: #ffb3b3 !important;
+            color: #800000 !important;
+        }
+        fieldset label:nth-of-type(2) {
+            background-color: #e6f0ff !important; /* B - Blue */
+            border-color: #b3d1ff !important;
+            color: #003380 !important;
+        }
+        fieldset label:nth-of-type(3) {
+            background-color: #fffde6 !important; /* C - Yellow */
+            border-color: #fff599 !important;
+            color: #665c00 !important;
+        }
+        fieldset label:nth-of-type(4) {
+            background-color: #e6f7ed !important; /* D - Green */
+            border-color: #b3e6c8 !important;
+            color: #004d20 !important;
         }
     </style>
 </head>
