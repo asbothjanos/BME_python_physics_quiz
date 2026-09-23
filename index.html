@@ -74,7 +74,7 @@
                 <li><a href="#" onclick="showTab('b2')">Batch 2</a></li>
                 <li><a href="#" onclick="showTab('b3')">Batch 3</a></li>
                 <li><a href="#" onclick="showTab('b4')">Batch 4</a></li>
-                <li><a href="#" onclick="showTab('b5')">Batch 5</a></li>
+                <!--<li><a href="#" onclick="showTab('b5')">Batch 5</a></li>-->
             </ul>
         </nav>
     </header>
@@ -146,7 +146,7 @@
                     { q: "Q9: Command to display major gridlines on axes?", opts: ["A) plt.grid(True)", "B) plt.background('grid')", "C) plt.showgrid()", "D) plt.lines(True)"], ans: "A", hint: "Pass True to grid().", exp: "plt.grid(True) toggles gridlines." },
                     { q: "Q10: Effect of two consecutive plt.plot() calls before plt.show()?", opts: ["A) Overwrites first plot", "B) Layers both curves on same axes", "C) Throws error", "D) Opens 2 windows"], ans: "B", hint: "Plots accumulate automatically.", exp: "Overlays both curves on the same plot." }
                 ]
-            },
+            }/*,
             b5: {
                 title: "Batch 5: Kinematics & Motion Diagrams",
                 desc: "Position, velocity, and acceleration graphs x(t), v(t), and a(t).",
@@ -162,7 +162,7 @@
                     { q: "Q9: Plot x(t) as red solid line, and velocity v(t) as green dots on axes ax?\n\nax.plot(t, x, 'r-')\nax.plot(t, v, 'go')", opts: ["A) Correct", "B) ax.plot(t, x, 'red')\nax.plot(t, v, 'dots')", "C) ax.scatter(t, x, 'r-')", "D) ax.plot(x, t, 'r-')"], ans: "A", hint: "'r-' is red solid line, 'go' is green circles.", exp: "ax.plot(t, x, 'r-') plots x(t) red solid line, ax.plot(t, v, 'go') green dots." },
                     { q: "Q10: Compute stopping distance x = v0 * t + 0.5 * a0 * t**2 for decelerating car?", opts: ["A) x = v0 * t + 0.5 * a0 * t**2", "B) x = v0 * t - 1/2 * a0 * t^2", "C) x = v0 * t + 0.5 * a0 * t * 2", "D) x = v0 + a0 * t"], ans: "A", hint: "Use ** for power and keep a0 negative.", exp: "x = v0 * t + 0.5 * a0 * t**2 is the correct position equation." }
                 ]
-            }
+            }*/
         };
 
         function showTab(id) {
