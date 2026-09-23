@@ -132,19 +132,79 @@
                 ]
             },
             b4: {
-                title: "Batch 4: Matplotlib Plotting",
-                desc: "Line plots, labels, titles, legends, and styling.",
+                title: "Batch 4: Visualizing & Interpreting Data",
+                desc: "Data dimensions, sampling resolution, graph overlays, and visual debugging.",
                 data: [
-                    { q: "Q1: Standard import alias for Matplotlib pyplot?", opts: ["A) import matplotlib as plt", "B) import matplotlib.pyplot as plt", "C) import pyplot as plt", "D) from matplotlib import plot"], ans: "B", hint: "Imports pyplot submodule as plt.", exp: "import matplotlib.pyplot as plt." },
-                    { q: "Q2: Plot position x vs time t with labels?\n\nplt.plot(t, x)\nplt.xlabel('Time (s)')\nplt.ylabel('Position (m)')", opts: ["A) Correct", "B) plt.line(t, x)", "C) plt.plot(x, t)", "D) plt.draw(t, x)"], ans: "A", hint: "x-axis goes first, then y-axis.", exp: "plt.plot(t, x) sets t on x-axis and x on y-axis." },
-                    { q: "Q3: Plot numerical points as discrete red circles?", opts: ["A) plt.plot(t, y, 'r-')", "B) plt.plot(t, y, 'ro')", "C) plt.plot(t, y, 'red-dot')", "D) plt.scatter_line(t, y, 'r')"], ans: "B", hint: "'r' = red, 'o' = circles.", exp: "'ro' formats discrete red circular markers." },
-                    { q: "Q4: Format string for a blue dashed line?", opts: ["A) 'b--'", "B) 'blue-dashed'", "C) 'b-dash'", "D) 'dashed-blue'"], ans: "A", hint: "'b' = blue, '--' = dashed line.", exp: "'b--' specifies blue dashed lines." },
-                    { q: "Q5: Command required to display plot legend labels?", opts: ["A) plt.showlegend()", "B) plt.legend()", "C) plt.display()", "D) plt.label()"], ans: "B", hint: "Renders active curve labels.", exp: "plt.legend() displays the key." },
-                    { q: "Q6: Function to set a title above a plot?", opts: ["A) plt.header()", "B) plt.title()", "C) plt.settitle()", "D) plt.toplabel()"], ans: "B", hint: "plt.title('text').", exp: "Sets the figure top title." },
-                    { q: "Q7: Command to restrict horizontal x-axis range from 0 to 10?", opts: ["A) plt.xlim(0, 10)", "B) plt.setx(0, 10)", "C) plt.xaxis(0, 10)", "D) plt.xrange(0, 10)"], ans: "A", hint: "Short for x limits.", exp: "plt.xlim(min, max) adjusts x boundaries." },
-                    { q: "Q8: Save current figure to an image file 'plot.png'?", opts: ["A) plt.export('plot.png')", "B) plt.savefig('plot.png')", "C) plt.save('plot.png')", "D) plt.write('plot.png')"], ans: "B", hint: "Short for save figure.", exp: "plt.savefig() writes image to disk." },
-                    { q: "Q9: Command to display major gridlines on axes?", opts: ["A) plt.grid(True)", "B) plt.background('grid')", "C) plt.showgrid()", "D) plt.lines(True)"], ans: "A", hint: "Pass True to grid().", exp: "plt.grid(True) toggles gridlines." },
-                    { q: "Q10: Effect of two consecutive plt.plot() calls before plt.show()?", opts: ["A) Overwrites first plot", "B) Layers both curves on same axes", "C) Throws error", "D) Opens 2 windows"], ans: "B", hint: "Plots accumulate automatically.", exp: "Overlays both curves on the same plot." }
+                    { 
+                        q: "Q1: Which standard import convention provides access to plotting functions in Python physics scripts?", 
+                        opts: ["A) import matplotlib as plt", "B) import matplotlib.pyplot as plt", "C) import pyplot as plt", "D) from matplotlib import plot"], 
+                        ans: "B", 
+                        hint: "Imports the pyplot submodule and aliases it as plt.", 
+                        exp: "import matplotlib.pyplot as plt is the standard convention." 
+                    },
+                    { 
+                        q: "Q2: When creating a line plot of position x versus time t using plt.plot(t, x), which variable is placed on the horizontal x-axis?", 
+                        opts: ["A) position x", "B) time t", "C) Whichever array is listed second", "D) Neither, Matplotlib decides automatically"], 
+                        ans: "B", 
+                        hint: "In plt.plot(horizontal, vertical), the first argument specifies the independent variable.", 
+                        exp: "The first argument (t) is mapped to the horizontal x-axis, and the second argument (x) to the vertical y-axis." 
+                    },
+                    { 
+                        q: "Q3: If t is an array of 100 time points, but your position array x has only 99 points, what happens when you run plt.plot(t, x)?", 
+                        opts: ["A) Matplotlib ignores the last time point", "B) It raises a ValueError because x and y dimensions must match", "C) It fills the missing point with zero", "D) It plots a bar chart instead of a line"], 
+                        ans: "B", 
+                        hint: "Every (x, y) point requires an explicit coordinate pair.", 
+                        exp: "Matplotlib requires the input arrays to have matching dimensions (first axis shape must be identical)." 
+                    },
+                    { 
+                        q: "Q4: A student plots a smooth sine wave y = np.sin(t) from t = 0 to 10, but the resulting graph looks like a jagged polygon with sharp corners. What is the most likely cause?", 
+                        opts: ["A) They imported NumPy incorrectly", "B) The time array t has too few sample points (e.g., 5 points instead of 100)", "C) Matplotlib cannot plot trigonometric functions", "D) The amplitude was set too high"], 
+                        ans: "B", 
+                        hint: "Line plots connect discrete points with straight segments.", 
+                        exp: "If sampling density is too low, straight line segments between distant points create a jagged appearance." 
+                    },
+                    { 
+                        q: "Q5: Why is it crucial to include physical units in your axis labels (e.g., 'Position x (m)' instead of just 'x')?", 
+                        opts: ["A) Python will throw a SyntaxError without units", "B) To clearly communicate physical scale and prevent misinterpretation of dimensionless numbers", "C) Units automatically set the plot axis limits", "D) Matplotlib uses units to convert arrays"], 
+                        ans: "B", 
+                        hint: "A number without units in physics carries ambiguous meaning.", 
+                        exp: "Axis labels with units allow anyone reading the graph to correctly interpret physical magnitudes and dimensions." 
+                    },
+                    { 
+                        q: "Q6: You execute two consecutive plotting calls: plt.plot(t, ynum) followed by plt.plot(t, yana). What does Matplotlib do by default?", 
+                        opts: ["A) Overwrites the first curve, displaying only yana", "B) Overlays both curves on the same axes with different default colors", "C) Opens two separate figure windows", "D) Raises an Error"], 
+                        ans: "B", 
+                        hint: "Plot calls on the active axes layer on top of each other.", 
+                        exp: "Matplotlib automatically accumulates multiple curves on the same axes, assigning a distinct default color to each." 
+                    },
+                    { 
+                        q: "Q7: How do you manually restrict the horizontal visible window of a plot to focus on time between t = 0.0 s and t = 2.5 s?", 
+                        opts: ["A) plt.xlim(0.0, 2.5)", "B) plt.setx(0.0, 2.5)", "C) plt.xaxis(0.0, 2.5)", "D) plt.xrange(0.0, 2.5)"], 
+                        ans: "A", 
+                        hint: "Look for the function that sets horizontal axis limits.", 
+                        exp: "plt.xlim(min, max) sets the lower and upper bounds of the horizontal axis." 
+                    },
+                    { 
+                        q: "Q8: When comparing a numerical Euler simulation against an exact analytical trajectory on the same graph, what visual strategy best distinguishes discrete numerical steps from a continuous theory line?", 
+                        opts: ["A) Plot both as solid lines of the exact same color", "B) Plot the analytical theory as a smooth line and numerical points as discrete markers", "C) Use logarithmic scale for the analytical model only", "D) Hide the axis labels"], 
+                        ans: "B", 
+                        hint: "Discrete numerical solutions represent specific sampled time steps.", 
+                        exp: "Using markers for numerical data and a continuous line for exact analytical theory makes the comparison visually clear." 
+                    },
+                    { 
+                        q: "Q9: You are plotting exponential decay N(t) = N0 * np.exp(-lambda_val * t) over several orders of magnitude. Which plot representation turns this curve into a straight line for easy slope analysis?", 
+                        opts: ["A) A standard linear-linear plot", "B) A semi-log plot (logarithmic vertical y-axis)", "C) A polar coordinate plot", "D) A 3D surface plot"], 
+                        ans: "B", 
+                        hint: "Taking the natural log of N(t) = N0 * e^(-lambda * t) yields ln(N) = ln(N0) - lambda * t, which is linear.", 
+                        exp: "A semi-logarithmic scale (log y vs linear x) converts exponential relationships into straight lines." 
+                    },
+                    { 
+                        q: "Q10: What is the primary purpose of calling plt.legend() after assigning label='...' strings to your plotted lines?", 
+                        opts: ["A) It saves the figure to disk", "B) It displays a color-coded key identifying what each curve represents", "C) It calculates the slope of the plotted curves", "D) It turns on the gridlines"], 
+                        ans: "B", 
+                        hint: "Connects label strings to line colors/styles on the graph.", 
+                        exp: "plt.legend() reads the label attributes assigned to curves and renders an explanatory key box on the figure." 
+                    }
                 ]
             }/*,
             b5: {
