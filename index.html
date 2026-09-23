@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physics Engineering - Python Quizzes</title>
-    <!-- Lightweight CSS framework for clean, native-looking UI without writing custom CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 </head>
 <body class="container" style="padding-top: 20px;">
@@ -38,8 +37,8 @@
                     { q: "Q3: Given vals = [10.0, 20.0, 30.0], which index accesses 30.0?", opts: ["A) vals[3]", "B) vals[2]", "C) vals[1]", "D) vals[30.0]"], ans: "B", hint: "Indexing starts at 0.", exp: "vals[0] is 10.0, vals[1] is 20.0, vals[2] is 30.0." },
                     { q: "Q4: What is len([1.5, 2.5, 3.5])?", opts: ["A) 2", "B) 3", "C) 4", "D) Error"], ans: "B", hint: "len() counts list items.", exp: "Returns 3, the total number of items." },
                     { q: "Q5: Value of pos after pos = [1.0, 2.0]; pos.append(3.0)?", opts: ["A) [3.0, 1.0, 2.0]", "B) [1.0, 2.0, 3.0]", "C) [1.0, 2.0]", "D) [6.0]"], ans: "B", hint: ".append() attaches items to the end.", exp: "Appends 3.0 to the list tail." },
-                    { q: "Q6: What will this script print?\nv = 12.0\nif v > 15.0:\n   &nbsp;&nbsp; print('Fast')\nelif v > 10.0:\n &nbsp;&nbsp;   print('Medium')\nelse:\n &nbsp;&nbsp;   print('Slow')", opts: ["A) Fast", "B) Medium", "C) Slow", "D) Nothing"], ans: "B", hint: "Executes the first true condition.", exp: "v > 10.0 is true first, printing 'Medium'." },
-                    { q: "Q7: Why does this fail?\nx = 5.0\nif x > 0:\nprint('Positive')", opts: ["A) Single quotes needed", "B) Indentation required", "C) Must be integer", "D) Missing colon"], ans: "B", hint: "Code blocks require indentation.", exp: "Statements inside if must be indented." },
+                    { q: "Q6: What prints?\n\nv = 12.0\nif v > 15.0:\n    print('Fast')\nelif v > 10.0:\n    print('Medium')\nelse:\n    print('Slow')", opts: ["A) Fast", "B) Medium", "C) Slow", "D) Nothing"], ans: "B", hint: "Executes the first true condition.", exp: "v > 10.0 is true first, printing 'Medium'." },
+                    { q: "Q7: Why does this fail?\n\nx = 5.0\nif x > 0:\nprint('Positive')", opts: ["A) Single quotes needed", "B) Indentation required", "C) Must be integer", "D) Missing colon"], ans: "B", hint: "Code blocks require indentation.", exp: "Statements inside if must be indented." },
                     { q: "Q8: Type of result for 5 + 2.0?", opts: ["A) int (7)", "B) float (7.0)", "C) str ('52.0')", "D) TypeError"], ans: "B", hint: "Int + Float yields Float.", exp: "5 is promoted to 5.0." },
                     { q: "Q9: Which checks if x is between 0.0 and 0.5 inclusive?", opts: ["A) 0.0 <= x <= 0.5", "B) 0.0 <= x and <= 0.5", "C) 0.0 <= x & 0.5", "D) x = 0.0 to 0.5"], ans: "A", hint: "Chained comparisons are allowed.", exp: "0.0 <= x <= 0.5 is valid Python syntax." },
                     { q: "Q10: Given lst = [0, 10, 20, 30, 40], what is lst[-1]?", opts: ["A) 0", "B) 40", "C) IndexError", "D) -1"], ans: "B", hint: "Negative indices count from the end.", exp: "lst[-1] returns the last item." }
@@ -49,14 +48,14 @@
                 title: "Batch 2: Loops & Functions",
                 desc: "For/while loops, parameters, return statements, and scope.",
                 data: [
-                    { q: "Q1: Result of s = 0; for i in range(1, 4): s = s + i?", opts: ["A) 10", "B) 6", "C) 4", "D) 3"], ans: "B", hint: "range(1, 4) gives 1, 2, 3.", exp: "1 + 2 + 3 = 6." },
-                    { q: "Q2: Executions of while t < 1.0: t = t + 0.2 starting at t = 0.0?", opts: ["A) 4", "B) 5", "C) 6", "D) Infinite"], ans: "B", hint: "t takes 0.0, 0.2, 0.4, 0.6, 0.8.", exp: "Runs 5 times before t reaches 1.0." },
+                    { q: "Q1: Result of s = 0?\n\nfor i in range(1, 4):\n    s = s + i", opts: ["A) 10", "B) 6", "C) 4", "D) 3"], ans: "B", hint: "range(1, 4) gives 1, 2, 3.", exp: "1 + 2 + 3 = 6." },
+                    { q: "Q2: Executions of while loop?\n\nt = 0.0\nwhile t < 1.0:\n    t = t + 0.2", opts: ["A) 4", "B) 5", "C) 6", "D) Infinite"], ans: "B", hint: "t takes 0.0, 0.2, 0.4, 0.6, 0.8.", exp: "Runs 5 times before t reaches 1.0." },
                     { q: "Q3: Correct function definition header?", opts: ["A) function getforce(m, a):", "B) def getforce(m, a):", "C) def getforce(m, a)", "D) create getforce(m, a):"], ans: "B", hint: "Starts with def and ends with :.", exp: "def getforce(m, a): is correct." },
-                    { q: "Q4: Output of def getke(m, v): return 0.5 * m * v**2; print(getke(2.0, 3.0))?", opts: ["A) 9.0", "B) 18.0", "C) 3.0", "D) None"], ans: "A", hint: "0.5 * 2.0 * 3.0**2.", exp: "0.5 * 2.0 * 9.0 = 9.0." },
+                    { q: "Q4: Output of code?\n\ndef getke(m, v):\n    return 0.5 * m * v**2\n\nprint(getke(2.0, 3.0))", opts: ["A) 9.0", "B) 18.0", "C) 3.0", "D) None"], ans: "A", hint: "0.5 * 2.0 * 3.0**2.", exp: "0.5 * 2.0 * 9.0 = 9.0." },
                     { q: "Q5: What is returned if a function lacks a return statement?", opts: ["A) 0", "B) None", "C) SyntaxError", "D) False"], ans: "B", hint: "Python returns a blank object.", exp: "Functions return None by default." },
                     { q: "Q6: Values assigned to step in for step in range(5):?", opts: ["A) 1, 2, 3, 4, 5", "B) 0, 1, 2, 3, 4", "C) 0, 1, 2, 3, 4, 5", "D) 1, 2, 3, 4"], ans: "B", hint: "Starts at 0, length 5.", exp: "0, 1, 2, 3, 4." },
-                    { q: "Q7: Speed v after two steps? v = 0.0; g = 9.8; dt = 0.1; v = v + g * dt", opts: ["A) 0.98", "B) 1.96", "C) 19.6", "D) 0.0"], ans: "B", hint: "Increases by 0.98 per step.", exp: "Step 1: 0.98; Step 2: 1.96." },
-                    { q: "Q8: Where does temp exist? def convert(c): temp = c + 273.15; return temp", opts: ["A) Globally", "B) Inside convert function only", "C) Everywhere after print", "D) In all modules"], ans: "B", hint: "Defined inside function scope.", exp: "temp is local to convert." },
+                    { q: "Q7: Speed v after two steps?\n\nv = 0.0\ng = 9.8\ndt = 0.1\nfor i in range(2):\n    v = v + g * dt", opts: ["A) 0.98", "B) 1.96", "C) 19.6", "D) 0.0"], ans: "B", hint: "Increases by 0.98 per step.", exp: "Step 1: 0.98; Step 2: 1.96." },
+                    { q: "Q8: Where does temp exist?\n\ndef convert(c):\n    temp = c + 273.15\n    return temp", opts: ["A) Globally", "B) Inside convert function only", "C) Everywhere after print", "D) In all modules"], ans: "B", hint: "Defined inside function scope.", exp: "temp is local to convert." },
                     { q: "Q9: Statement to immediately exit a loop?", opts: ["A) continue", "B) break", "C) stop", "D) exit"], ans: "B", hint: "Terminates execution instantly.", exp: "break exits the loop." },
                     { q: "Q10: Command inside while t < 1.0: to advance time?", opts: ["A) t = t + dt", "B) dt = dt + t", "C) t = t * dt", "D) break(t)"], ans: "A", hint: "Increment time variable t by dt.", exp: "t = t + dt advances time toward 1.0." }
                 ]
@@ -82,7 +81,7 @@
                 desc: "Line plots, labels, titles, legends, and styling.",
                 data: [
                     { q: "Q1: Standard import alias for Matplotlib pyplot?", opts: ["A) import matplotlib as plt", "B) import matplotlib.pyplot as plt", "C) import pyplot as plt", "D) from matplotlib import plot"], ans: "B", hint: "Imports pyplot submodule as plt.", exp: "import matplotlib.pyplot as plt." },
-                    { q: "Q2: Plot position x vs time t with labels?", opts: ["A) plt.plot(t, x); plt.xlabel('Time (s)'); plt.ylabel('Position (m)')", "B) plt.line(t, x)", "C) plt.plot(x, t)", "D) plt.draw(t, x)"], ans: "A", hint: "x-axis goes first, then y-axis.", exp: "plt.plot(t, x) sets t on x-axis and x on y-axis." },
+                    { q: "Q2: Plot position x vs time t with labels?", opts: ["A) plt.plot(t, x)\nplt.xlabel('Time (s)')\nplt.ylabel('Position (m)')", "B) plt.line(t, x)", "C) plt.plot(x, t)", "D) plt.draw(t, x)"], ans: "A", hint: "x-axis goes first, then y-axis.", exp: "plt.plot(t, x) sets t on x-axis and x on y-axis." },
                     { q: "Q3: Plot numerical points as discrete red circles?", opts: ["A) plt.plot(t, y, 'r-')", "B) plt.plot(t, y, 'ro')", "C) plt.plot(t, y, 'red-dot')", "D) plt.scatter_line(t, y, 'r')"], ans: "B", hint: "'r' = red, 'o' = circles.", exp: "'ro' formats discrete red circular markers." },
                     { q: "Q4: Format string for a blue dashed line?", opts: ["A) 'b--'", "B) 'blue-dashed'", "C) 'b-dash'", "D) 'dashed-blue'"], ans: "A", hint: "'b' = blue, '--' = dashed line.", exp: "'b--' specifies blue dashed lines." },
                     { q: "Q5: Command required to display plot legend labels?", opts: ["A) plt.showlegend()", "B) plt.legend()", "C) plt.display()", "D) plt.label()"], ans: "B", hint: "Renders active curve labels.", exp: "plt.legend() displays the key." },
@@ -114,12 +113,17 @@
                 app.innerHTML = `
                     <h2>${qObj.title}</h2>
                     <p>${qObj.desc}</p>
-                    ${qObj.data.map((item, idx) => `
+                    ${qObj.data.map((item, idx) => {
+                        const parts = item.q.split('\n\n');
+                        const header = parts[0];
+                        const codeBlock = parts.length > 1 ? `<pre><code>${parts.slice(1).join('\n\n')}</code></pre>` : '';
+                        
+                        return `
                         <article>
-                            <p><strong>${item.q.replace(/\n/g, '<br>')}</strong></p>
+                            <p><strong>${header}</strong></p>${codeBlock}
                             <fieldset>
                                 ${item.opts.map(opt => `
-                                    <label>
+                                    <label style="white-space: pre-wrap;">
                                         <input type="radio" name="q${idx}" value="${opt[0]}"> ${opt}
                                     </label>
                                 `).join('')}
@@ -130,8 +134,8 @@
                             </div>
                             <p id="h-${idx}" style="display:none; color: var(--pico-color-amber-500);">💡 <strong>Hint:</strong> ${item.hint}</p>
                             <p id="f-${idx}" style="display:none;"></p>
-                        </article>
-                    `).join('')}
+                        </article>`;
+                    }).join('')}
                 `;
             }
         }
