@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Engineering - Python Quiz 1</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.5;
+        }
+        h1 {
+            color: #0d6efd;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e3e6f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .question-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        pre {
+            background-color: #f1f3f5;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9em;
+        }
+        .options-group {
+            margin: 16px 0;
+        }
+        .option-label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.15s ease;
+        }
+        .option-label:hover {
+            background-color: #e9ecef;
+        }
+        .option-label input {
+            margin-right: 10px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+        .btn-submit {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .btn-submit:hover {
+            background-color: #0b5ed7;
+        }
+        .btn-hint {
+            background-color: #ffc107;
+            color: #000;
+        }
+        .btn-hint:hover {
+            background-color: #ffca2c;
+        }
+        .feedback {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+        .feedback.correct {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            border: 1px solid #badbcc;
+        }
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #842029;
+            border: 1px solid #f5c2c7;
+        }
+        .hint-box {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background-color: #fff3cd;
+            color: #664d03;
+            border: 1px solid #ffe69c;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Physics Engineering: Python Practice Quiz</h1>
+    <div id="quiz-container"></div>
+
+    <script>
+        const quizData = [
+            {
+                question: "Q1: What is the result of evaluating the Python expression 7 / 2?",
+                options: ["A) 3", "B) 3.5", "C) 3.0", "D) 4"],
+                correct: "B",
+                hint: "Standard division / in Python always yields a floating-point number.",
+                explanation: "In Python 3, / performs true float division (7 / 2 = 3.5). Integer division would be 7 // 2."
+            },
+            {
+                question: "Q2: What is the value of x after executing x = 2 + 3 * 4**2?",
+                options: ["A) 50", "B) 80", "C) 144", "D) 400"],
+                correct: "A",
+                hint: "Python follows standard operator precedence: exponentiation first, then multiplication, then addition.",
+                explanation: "Exponentiation happens first (4**2 = 16), followed by multiplication (3 * 16 = 48), and addition (2 + 48 = 50)."
+            },
+            {
+                question: "Q3: Consider the list vals = [10.0, 20.0, 30.0, 40.0]. Which index accesses the value 30.0?",
+                options: ["A) vals[3]", "B) vals[2]", "C) vals[1]", "D) vals[30.0]"],
+                correct: "B",
+                hint: "Python lists use zero-based indexing (the first item is at index 0).",
+                explanation: "vals[0] is 10.0, vals[1] is 20.0, and vals[2] is 30.0."
+            },
+            {
+                question: "Q4: What is the length of the list data = [1.5, 2.5, 3.5]?",
+                options: ["A) len(data) returns 2", "B) len(data) returns 3", "C) len(data) returns 4", "D) data.length() returns 3"],
+                correct: "B",
+                hint: "Use the built-in function len() to count elements in a Python list.",
+                explanation: "len(data) returns 3, the number of items stored in the list."
+            },
+            {
+                question: "Q5: What value does pos contain after running pos = [1.0, 2.0] followed by pos.append(3.0)?",
+                options: ["A) [3.0, 1.0, 2.0]", "B) [1.0, 2.0, 3.0]", "C) [1.0, 2.0]", "D) [6.0]"],
+                correct: "B",
+                hint: "The .append() method adds a single new element to the end of an existing list.",
+                explanation: ".append(3.0) attaches 3.0 to the tail of pos."
+            },
+            {
+                question: "Q6: What will be printed by the following conditional block?\n\nv = 12.0\nif v > 15.0:\n    print('Fast')\nelif v > 10.0:\n    print('Medium')\nelse:\n    print('Slow')",
+                options: ["A) Fast", "B) Medium", "C) Slow", "D) Nothing is printed"],
+                correct: "B",
+                hint: "Python evaluates if and elif conditions sequentially from top to bottom and executes the first true block.",
+                explanation: "v > 15.0 is False. v > 10.0 is True (12.0 > 10.0), so 'Medium' is printed and the else block is skipped."
+            },
+            {
+                question: "Q7: Why does the following code snippet raise an IndentationError in Python?\n\nx = 5.0\nif x > 0:\nprint('Positive')",
+                options: [
+                    "A) The string 'Positive' needs single quotes instead of double quotes.",
+                    "B) The line inside the if block must be indented with spaces or a tab.",
+                    "C) x should be an integer, not a float.",
+                    "D) The colon : is missing after the print statement."
+                ],
+                correct: "B",
+                hint: "Python uses block indentation (spaces/tabs) to define code structures instead of curly braces {}.",
+                explanation: "Statements inside control structures (if, for, def) must be indented relative to the header line."
+            },
+            {
+                question: "Q8: What is the resulting type of a + b when a = 5 (int) and b = 2.0 (float)?",
+                options: ["A) int with value 7", "B) float with value 7.0", "C) str with value '52.0'", "D) It raises a TypeError"],
+                correct: "B",
+                hint: "Mixing integer and float operands automatically converts the integer to a float.",
+                explanation: "Python implicitly promotes the integer 5 to float 5.0, yielding 7.0."
+            },
+            {
+                question: "Q9: Which boolean condition correctly checks if a spring extension x is between 0.0 and 0.5 meters inclusive?",
+                options: ["A) 0.0 <= x <= 0.5", "B) 0.0 <= x and <= 0.5", "C) 0.0 <= x & 0.5", "D) x = 0.0 to 0.5"],
+                correct: "A",
+                hint: "Python supports chained comparison operators directly.",
+                explanation: "0.0 <= x <= 0.5 is valid Python syntax, equivalent to 0.0 <= x and x <= 0.5."
+            },
+            {
+                question: "Q10: Given lst = [0, 10, 20, 30, 40], what does lst[-1] return?",
+                options: ["A) 0", "B) 40", "C) An IndexError", "D) -1"],
+                correct: "B",
+                hint: "Negative indices count backward from the end of a list.",
+                explanation: "lst[-1] retrieves the last element, which is 40."
+            }
+        ];
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            quizData.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+
+                // Format text and code snippets
+                const parts = q.question.split('\n\n');
+                let questionHTML = `<div class="question-title">${parts[0]}</div>`;
+                if (parts.length > 1) {
+                    questionHTML += `<pre><code>${parts.slice(1).join('\n\n')}</code></pre>`;
+                }
+
+                let optionsHTML = '<div class="options-group">';
+                q.options.forEach(opt => {
+                    const letter = opt[0];
+                    optionsHTML += `
+                        <label class="option-label">
+                            <input type="radio" name="q${idx}" value="${letter}">
+                            ${opt}
+                        </label>
+                    `;
+                });
+                optionsHTML += '</div>';
+
+                const buttonsHTML = `
+                    <div class="btn-group">
+                        <button class="btn-submit" onclick="checkAnswer(${idx})">Check Answer</button>
+                        <button class="btn-hint" onclick="toggleHint(${idx})">💡 Hint</button>
+                    </div>
+                    <div id="hint-${idx}" class="hint-box" style="display:none;">💡 <strong>Hint:</strong> ${q.hint}</div>
+                    <div id="feedback-${idx}" style="display:none;"></div>
+                `;
+
+                card.innerHTML = questionHTML + optionsHTML + buttonsHTML;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleHint(idx) {
+            const hintBox = document.getElementById(`hint-${idx}`);
+            hintBox.style.display = hintBox.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function checkAnswer(idx) {
+            const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+            const feedbackBox = document.getElementById(`feedback-${idx}`);
+            const q = quizData[idx];
+
+            feedbackBox.style.display = 'block';
+
+            if (!selected) {
+                feedbackBox.className = 'feedback incorrect';
+                feedbackBox.innerHTML = '⚠️ Please select an answer first.';
+                return;
+            }
+
+            if (selected.value === q.correct) {
+                feedbackBox.className = 'feedback correct';
+                feedbackBox.innerHTML = `✅ <strong>Correct!</strong> ${q.explanation}`;
+            } else {
+                feedbackBox.className = 'feedback incorrect';
+                feedbackBox.innerHTML = `❌ <strong>Incorrect.</strong> The correct answer is <strong>${q.correct}</strong>. ${q.explanation}`;
+            }
+        }
+
+        renderQuiz();
+    </script>
+</body>
+</html>
