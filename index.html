@@ -121,19 +121,19 @@
                         return `
                         <article>
                             <p><strong>${header}</strong></p>${codeBlock}
-                            <fieldset>
+                            <fieldset style="margin-bottom: 0.5rem;">
                                 ${item.opts.map(opt => `
                                     <label style="white-space: pre-wrap; margin-bottom: 0.25rem;">
                                         <input type="radio" name="q${idx}" value="${opt[0]}"> ${opt}
                                     </label>
                                 `).join('')}
                             </fieldset>
-                            <div class="grid">
+                            <div class="grid" style="margin-top: 0.5rem;">
                                 <button onclick="check('${id}',${idx})">Check</button>
                                 <button class="secondary" onclick="toggle('h-${idx}')">💡 Hint</button>
                             </div>
-                            <p id="h-${idx}" style="display:none; color: var(--pico-color-amber-500);">💡 <strong>Hint:</strong> ${item.hint}</p>
-                            <p id="f-${idx}" style="display:none;"></p>
+                            <p id="h-${idx}" style="display:none; color: var(--pico-color-amber-500); margin-top: 0.5rem;">💡 <strong>Hint:</strong> ${item.hint}</p>
+                            <p id="f-${idx}" style="display:none; margin-top: 0.5rem;"></p>
                         </article>`;
                     }).join('')}
                 `;
