@@ -37,7 +37,7 @@
             font-size: 0.9em;
         }
 
-        /* Colored backgrounds for options A, B, C, D */
+        /* Distinct colored backgrounds for options A, B, C, D */
         fieldset label:nth-of-type(1) {
             background-color: #ffe6e6 !important; /* A - Red */
             border-color: #ffb3b3 !important;
@@ -146,132 +146,21 @@
                     { q: "Q9: Command to display major gridlines on axes?", opts: ["A) plt.grid(True)", "B) plt.background('grid')", "C) plt.showgrid()", "D) plt.lines(True)"], ans: "A", hint: "Pass True to grid().", exp: "plt.grid(True) toggles gridlines." },
                     { q: "Q10: Effect of two consecutive plt.plot() calls before plt.show()?", opts: ["A) Overwrites first plot", "B) Layers both curves on same axes", "C) Throws error", "D) Opens 2 windows"], ans: "B", hint: "Plots accumulate automatically.", exp: "Overlays both curves on the same plot." }
                 ]
-            }
+            },
             b5: {
                 title: "Batch 5: Kinematics & Motion Diagrams",
                 desc: "Position, velocity, and acceleration graphs x(t), v(t), and a(t).",
                 data: [
-                    {
-                        q: "Q1: A particle moves with constant velocity v0 = 5.0 m/s. Which NumPy code correctly generates position values x(t) = v0 * t over time array t?",
-                        opts: [
-                            "A) x = v0 * t",
-                            "B) x = v0 + t",
-                            "C) x = v0 * t**2",
-                            "D) x = v0 / t"
-                        ],
-                        ans: "A",
-                        hint: "For uniform motion, position is a linear function of time.",
-                        exp: "x = v0 * t computes position element-wise across array t for constant speed v0."
-                    },
-                    {
-                        q: "Q2: In a position vs time plot x(t), what physical quantity corresponds to the slope of the curve at any point?",
-                        opts: [
-                            "A) Acceleration",
-                            "B) Velocity",
-                            "C) Displacement",
-                            "D) Force"
-                        ],
-                        ans: "B",
-                        hint: "Recall that derivative v(t) = dx/dt represents the rate of change of position.",
-                        exp: "The slope dx/dt on an x(t) graph represents instantaneous velocity v(t)."
-                    },
-                    {
-                        q: "Q3: Given a velocity array v and constant time step dt, which expression computes numerical acceleration using finite differences a_i = (v_{i+1} - v_i) / dt?",
-                        opts: [
-                            "A) a = (v[1:] - v[:-1]) / dt",
-                            "B) a = (v[:-1] - v[1:]) / dt",
-                            "C) a = (v[1:] - v[0:]) / dt",
-                            "D) a = v / dt"
-                        ],
-                        opts_code: true,
-                        ans: "A",
-                        hint: "Compare the slice missing the first element against the slice missing the last element.",
-                        exp: "v[1:] - v[:-1] subtracts v_i from v_{i+1} for all adjacent time points."
-                    },
-                    {
-                        q: "Q4: A ball undergoes free fall with constant acceleration g = -9.8 m/s**2 starting from rest at x0 = 20.0 m. What is the velocity v(t) as a function of time?",
-                        opts: [
-                            "A) v = g * t",
-                            "B) v = x0 + g * t",
-                            "C) v = 0.5 * g * t**2",
-                            "D) v = g / t"
-                        ],
-                        ans: "A",
-                        hint: "Starting from rest means initial velocity v0 = 0 m/s.",
-                        exp: "v(t) = v0 + g * t simplifies to v = g * t when v0 = 0."
-                    },
-                    {
-                        q: "Q5: What physical quantity is represented by the area under a velocity-time curve v(t) between t1 and t2?",
-                        opts: [
-                            "A) Instantaneous acceleration",
-                            "B) Displacement delta x",
-                            "C) Average acceleration",
-                            "D) Final position only"
-                        ],
-                        ans: "B",
-                        hint: "Integral of velocity over time yields total change in position.",
-                        exp: "The definite integral integral(v dt) represents net displacement delta x."
-                    },
-                    {
-                        q: "Q6: Which code segment sets up a 3-panel stacked figure showing x(t), v(t), and a(t) vertically using Matplotlib?",
-                        opts: [
-                            "A) fig, (ax1, ax2, ax3) = plt.subplots(3, 1)",
-                            "B) fig, (ax1, ax2, ax3) = plt.subplots(1, 3)",
-                            "C) fig = plt.plot_stacked(3)",
-                            "D) fig = plt.subplots(grid=(3, 3))"
-                        ],
-                        ans: "A",
-                        hint: "plt.subplots(nrows, ncols) creates subplots; 3 rows and 1 column stack vertically.",
-                        exp: "plt.subplots(3, 1) creates 3 vertically stacked axes for x(t), v(t), and a(t)."
-                    },
-                    {
-                        q: "Q7: Consider the motion of a harmonic oscillator x(t) = A * np.sin(omega * t). What is its acceleration a(t)?",
-                        opts: [
-                            "A) a = -omega**2 * A * np.sin(omega * t)",
-                            "B) a = omega * A * np.cos(omega * t)",
-                            "C) a = -A * np.cos(omega * t)",
-                            "D) a = omega**2 * x"
-                        ],
-                        ans: "A",
-                        hint: "Differentiate x(t) twice with respect to t.",
-                        exp: "Second derivative d2x/dt2 yields a(t) = -omega**2 * x(t)."
-                    },
-                    {
-                        q: "Q8: If a velocity-time graph v(t) is a horizontal flat line at v = 3.0 m/s, what does the corresponding acceleration-time graph a(t) look like?",
-                        opts: [
-                            "A) A constant line at a = 0.0 m/s**2",
-                            "B) A line with positive constant slope",
-                            "C) A horizontal line at a = 3.0 m/s**2",
-                            "D) A parabolic curve"
-                        ],
-                        ans: "A",
-                        hint: "Constant velocity means speed does not change with time.",
-                        exp: "Since slope dv/dt = 0 for constant velocity, acceleration is zero everywhere."
-                    },
-                    {
-                        q: "Q9: How do you plot position x against time t with a red solid line, and velocity v against time t as green dots on the same axes ax?",
-                        opts: [
-                            "A)\nax.plot(t, x, 'r-')\nax.plot(t, v, 'go')",
-                            "B)\nax.plot(t, x, 'red')\nax.plot(t, v, 'dots')",
-                            "C)\nax.scatter(t, x, 'r-')\nax.line(t, v, 'go')",
-                            "D)\nax.plot(x, t, 'r-')\nax.plot(v, t, 'go')"
-                        ],
-                        ans: "A",
-                        hint: "'r-' denotes red continuous line, 'go' denotes green circle markers.",
-                        exp: "ax.plot(t, x, 'r-') plots x(t) red solid, and ax.plot(t, v, 'go') overlays v(t) green circles."
-                    },
-                    {
-                        q: "Q10: A vehicle slows down from v0 = 20.0 m/s to a complete stop with uniform acceleration a0 = -2.0 m/s**2. Which line computes stopping distance x using x = v0 * t + 0.5 * a0 * t**2?",
-                        opts: [
-                            "A) x = v0 * t + 0.5 * a0 * t**2",
-                            "B) x = v0 * t - 1/2 * a0 * t^2",
-                            "C) x = v0 * t + 0.5 * a0 * t * 2",
-                            "D) x = v0 + a0 * t"
-                        ],
-                        ans: "A",
-                        hint: "Remember to use ** for power and keep the negative sign in variable a0.",
-                        exp: "x = v0 * t + 0.5 * a0 * t**2 is the correct kinematic position equation in Python."
-                    }
+                    { q: "Q1: A particle moves with constant velocity v0 = 5.0 m/s. Which NumPy code calculates position x(t) over array t?", opts: ["A) x = v0 * t", "B) x = v0 + t", "C) x = v0 * t**2", "D) x = v0 / t"], ans: "A", hint: "For uniform motion, x = v0 * t.", exp: "x = v0 * t computes position element-wise for constant speed." },
+                    { q: "Q2: In a position vs time plot x(t), what physical quantity corresponds to the slope at any point?", opts: ["A) Acceleration", "B) Velocity", "C) Displacement", "D) Force"], ans: "B", hint: "Derivative v(t) = dx/dt represents rate of change.", exp: "The slope dx/dt on an x(t) graph represents instantaneous velocity v(t)." },
+                    { q: "Q3: Calculate numerical acceleration using finite differences a_i = (v_{i+1} - v_i) / dt?", opts: ["A) a = (v[1:] - v[:-1]) / dt", "B) a = (v[:-1] - v[1:]) / dt", "C) a = (v[1:] - v[0:]) / dt", "D) a = v / dt"], ans: "A", hint: "Subtract v_i (v[:-1]) from v_{i+1} (v[1:]).", exp: "v[1:] - v[:-1] subtracts v_i from v_{i+1} for adjacent points." },
+                    { q: "Q4: Free fall starting from rest (v0 = 0 m/s) with g = -9.8 m/s**2. What is velocity v(t)?", opts: ["A) v = g * t", "B) v = x0 + g * t", "C) v = 0.5 * g * t**2", "D) v = g / t"], ans: "A", hint: "v(t) = v0 + g * t with v0 = 0.", exp: "v(t) simplifies to v = g * t when starting from rest." },
+                    { q: "Q5: What quantity is represented by the area under a velocity-time curve v(t)?", opts: ["A) Instantaneous acceleration", "B) Displacement delta x", "C) Average acceleration", "D) Final position only"], ans: "B", hint: "Integration of velocity yields change in position.", exp: "The definite integral of v(t) represents net displacement delta x." },
+                    { q: "Q6: Which code segment sets up 3 vertically stacked subplots for x(t), v(t), and a(t)?", opts: ["A) fig, (ax1, ax2, ax3) = plt.subplots(3, 1)", "B) fig, (ax1, ax2, ax3) = plt.subplots(1, 3)", "C) fig = plt.plot_stacked(3)", "D) fig = plt.subplots(grid=(3, 3))"], ans: "A", hint: "plt.subplots(nrows, ncols); 3 rows and 1 column stack vertically.", exp: "plt.subplots(3, 1) creates 3 vertically stacked axes." },
+                    { q: "Q7: Harmonic oscillator x(t) = A * np.sin(omega * t). What is acceleration a(t)?", opts: ["A) a = -omega**2 * A * np.sin(omega * t)", "B) a = omega * A * np.cos(omega * t)", "C) a = -A * np.cos(omega * t)", "D) a = omega**2 * x"], ans: "A", hint: "Differentiate x(t) twice with respect to time.", exp: "Second derivative d2x/dt2 yields a(t) = -omega**2 * x(t)." },
+                    { q: "Q8: If velocity v(t) is a horizontal flat line at v = 3.0 m/s, what is acceleration a(t)?", opts: ["A) A constant line at a = 0.0 m/s**2", "B) A line with positive constant slope", "C) A horizontal line at a = 3.0 m/s**2", "D) A parabolic curve"], ans: "A", hint: "Constant velocity means zero change in speed.", exp: "Slope dv/dt = 0 for constant velocity, so acceleration is zero." },
+                    { q: "Q9: Plot x(t) as red solid line, and velocity v(t) as green dots on axes ax?\n\nax.plot(t, x, 'r-')\nax.plot(t, v, 'go')", opts: ["A) Correct", "B) ax.plot(t, x, 'red')\nax.plot(t, v, 'dots')", "C) ax.scatter(t, x, 'r-')", "D) ax.plot(x, t, 'r-')"], ans: "A", hint: "'r-' is red solid line, 'go' is green circles.", exp: "ax.plot(t, x, 'r-') plots x(t) red solid line, ax.plot(t, v, 'go') green dots." },
+                    { q: "Q10: Compute stopping distance x = v0 * t + 0.5 * a0 * t**2 for decelerating car?", opts: ["A) x = v0 * t + 0.5 * a0 * t**2", "B) x = v0 * t - 1/2 * a0 * t^2", "C) x = v0 * t + 0.5 * a0 * t * 2", "D) x = v0 + a0 * t"], ans: "A", hint: "Use ** for power and keep a0 negative.", exp: "x = v0 * t + 0.5 * a0 * t**2 is the correct position equation." }
                 ]
             }
         };
