@@ -73,6 +73,7 @@
                 <li><a href="#" onclick="showTab('b1')">Batch 1</a></li>
                 <li><a href="#" onclick="showTab('b1a')">Batch 1a</a></li>
                 <li><a href="#" onclick="showTab('b2')">Batch 2</a></li>
+                <li><a href="#" onclick="showTab('b2a')">Batch 2a</a></li>
                 <li><a href="#" onclick="showTab('b3')">Batch 3</a></li>
                 <li><a href="#" onclick="showTab('b4')">Batch 4</a></li>
                 <!--<li><a href="#" onclick="showTab('b5')">Batch 5</a></li>-->
@@ -133,6 +134,132 @@
                     { q: "Q8: Where does temp exist?\n\ndef convert(c):\n    temp = c + 273.15\n    return temp", opts: ["A) Globally", "B) Inside convert function only", "C) Everywhere after print", "D) In all modules"], ans: "B", hint: "Defined inside function scope.", exp: "temp is local to convert." },
                     { q: "Q9: Statement to immediately exit a loop?", opts: ["A) continue", "B) break", "C) stop", "D) exit"], ans: "B", hint: "Terminates execution instantly.", exp: "break exits the loop." },
                     { q: "Q10: Command inside while t &lt; 1.0: to advance time?", opts: ["A) t = t + dt", "B) dt = dt + t", "C) t = t * dt", "D) break(t)"], ans: "A", hint: "Increment time variable t by dt.", exp: "t = t + dt advances time toward 1.0." }
+                ]
+            },
+            b2a: {
+                title: "Batch 2: Algorithmic Thinking & Loops",
+                desc: "Translating physical models into simulation loops, functions, and state updates.",
+                data: [
+                    {
+                        q: "Q1: What does this accumulator loop calculate?\n\ntotal = 0.0\nfor f in [5.0, 3.0, -2.0]:\n    total = total + f",
+                        opts: [
+                            "A) The algebraic sum of the list elements (6.0).",
+                            "B) The product of all elements.",
+                            "C) The final element in the list (-2.0).",
+                            "D) An infinite loop."
+                        ],
+                        ans: "A",
+                        hint: "Each item is added to the running accumulator variable.",
+                        exp: "Summing the values yields 5.0 + 3.0 - 2.0 = 6.0."
+                    },
+                    {
+                        q: "Q2: What is the final value of x after this step-by-step update loop finishes?\n\nx = 0.0\nv = 3.0\ndt = 1.0\nfor i in range(3):\n    x = x + v * dt",
+                        opts: [
+                            "A) 9.0",
+                            "B) 3.0",
+                            "C) 0.0",
+                            "D) 6.0"
+                        ],
+                        ans: "A",
+                        hint: "Track x across 3 iterations: 0 + 3, then 3 + 3, then 6 + 3.",
+                        exp: "Each iteration adds displacement (v * dt = 3.0) to the running position variable, totaling 9.0."
+                    },
+                    {
+                        q: "Q3: How many times will this simulation loop run before stopping?\n\nx = 10.0\nwhile x &gt; 0.0:\n    x = x - 2.5",
+                        opts: [
+                            "A) 2 times",
+                            "B) 4 times",
+                            "C) 5 times",
+                            "D) Infinite times"
+                        ],
+                        ans: "B",
+                        hint: "Track values of x: 10.0 -> 7.5 -> 5.0 -> 2.5 -> 0.0.",
+                        exp: "It executes 4 iterations, stopping when x > 0.0 becomes false."
+                    },
+                    {
+                        q: "Q4: Why is writing a function better than repeating math inline?\n\ndef kin_E(m, v):\n    return 0.5 * m * v**2",
+                        opts: [
+                            "A) It centralizes the logic so it can be reused safely across the script.",
+                            "B) Python forces all equations into functions.",
+                            "C) It automatically converts all integers to strings.",
+                            "D) Functions disable error messages."
+                        ],
+                        ans: "A",
+                        hint: "Encapsulation prevents copy-paste errors.",
+                        exp: "Defining a function avoids code duplication and makes maintenance clean."
+                    },
+                    {
+                        q: "Q5: What does this loop track in variable max_height?\n\nmax_height = 0.0\nfor x in [5.0, 12.0, 8.0, 3.0]:\n    if x &gt; max_height:\n        max_height = x",
+                        opts: [
+                            "A) The code contains a logical bug and fails to run.",
+                            "B) The highest value found in the sequence (12.0).",
+                            "C) The final value in the sequence (3.0).",
+                            "D) The number of items in the list."
+                        ],
+                        ans: "B",
+                        hint: "The if condition updates max_height only when a larger value appears.",
+                        exp: "The code is completely correct as-is and acts as a running peak tracker, capturing 12.0."
+                    },
+                    {
+                        q: "Q6: Which line of code correctly fills in the missing line to build a list of positions dynamically inside a loop?\n\npos = []\nfor x in [1.0, 2.0, 3.0]:\n    # --- MISSING LINE ---",
+                        opts: [
+                            "A) pos.append(x)",
+                            "B) pos = pos + x",
+                            "C) pos[i] = x",
+                            "D) pos.add(x)"
+                        ],
+                        ans: "A",
+                        hint: "Python lists grow dynamically using the .append() method.",
+                        exp: "pos.append(x) appends each calculated position sequentially to the end of the list."
+                    },
+                    {
+                        q: "Q7: How many times will print(\".\") execute in this simulation setup?\n\ntmax = 1.0\ndt = 0.2\nsteps = int(tmax / dt)\nfor i in range(steps):\n    print(\".\")",
+                        opts: [
+                            "A) 5 times",
+                            "B) 1 time",
+                            "C) 0 times",
+                            "D) 10 times"
+                        ],
+                        ans: "A",
+                        hint: "1.0 / 0.2 = 5.0.",
+                        exp: "int(5.0) evaluates to 5, meaning range(5) runs the loop body 5 times."
+                    },
+                    {
+                        q: "Q8: What is the purpose of the break statement in this loop?\n\nfor v in velocities:\n    if v &gt; 10.0:\n        print('Threshold reached!')\n        break",
+                        opts: [
+                            "A) To instantly exit the loop once the condition is met.",
+                            "B) To pause execution for 10 seconds.",
+                            "C) To delete the velocity variable.",
+                            "D) To skip only the current iteration."
+                        ],
+                        ans: "A",
+                        hint: "break terminates the enclosing loop entirely.",
+                        exp: "It stops iterating as soon as the threshold condition triggers."
+                    },
+                    {
+                        q: "Q9: Why is return preferred over print inside a calculation function?\n\ndef compute_pos(v, t):\n    return v * t",
+                        opts: [
+                            "A) Returning allows the result to be stored in variables, analyzed, or plotted.",
+                            "B) print causes syntax errors inside functions.",
+                            "C) return makes the computer run cooler.",
+                            "D) Print statements are illegal in Python."
+                        ],
+                        ans: "A",
+                        hint: "Think about whether you want to save data or just look at text.",
+                        exp: "return passes data back for further math/plotting, whereas print only displays text."
+                    },
+                    {
+                        q: "Q10: Why does this simulation loop produce incorrect physics?\n\nx = 0.0\nv = 5.0\nfor i in range(3):\n    x = 0.0 + v * 1.0",
+                        opts: [
+                            "A) It resets position to 0.0 every step instead of accumulating movement from previous x.",
+                            "B) range(3) is too short for physics.",
+                            "C) Variables cannot be named x and v.",
+                            "D) Multiplication requires integer operands."
+                        ],
+                        ans: "A",
+                        hint: "Dynamic evolution requires building upon the current state, not the initial reset.",
+                        exp: "Hardcoding 0.0 ignores accumulated displacement, causing the object to reset back to the origin each step."
+                    }
                 ]
             },
             b3: {
