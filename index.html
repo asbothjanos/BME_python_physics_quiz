@@ -104,9 +104,12 @@
                 title: "Batch 1a: Basic Python",
                 desc: "Type conversion, modulo, list mutability, slicing, membership, and logic.",
                 data: [
-                    { q: "Q1: What does int(4.9) return in Python?", opts: ["A) 4", "B) 5", "C) 4.9", "D) TypeError"], ans: "A", hint: "int() truncates the decimal part toward zero.", exp: "int() strips the fractional part, resulting in 4." },
-                    { q: "Q2: What is the result of evaluating 10 % 3?", opts: ["A) 3", "B) 3.33", "C) 1", "D) 0"], ans: "C", hint: "% computes the remainder of division.", exp: "10 divided by 3 is 3 with a remainder of 1." },
-                    { q: "Q3: Given vals = [2.0, 4.0, 6.0], what is the list after vals[1] = 9.0?", opts: ["A) [2.0, 9.0, 6.0]", "B) [9.0, 4.0, 6.0]", "C) [2.0, 4.0, 9.0]", "D) IndexError"], ans: "A", hint: "List elements are mutable and reassignable by index.", exp: "Index 1 refers to the second element (4.0), changing it to 9.0." },
+                    { q: "Q1: What does int(4.9) return in Python?", opts: ["A) 4", "B) 5", "C) 4.9", "D) TypeError"], 
+                     ans: "A", hint: "int() truncates the decimal part toward zero.", exp: "int() strips the fractional part, resulting in 4." },
+                    { q: "Q2: What is the result of evaluating 10 % 3?", opts: ["A) 3", "B) 3.33", "C) 1", "D) 0"], 
+                     ans: "C", hint: "% computes the remainder of division.", exp: "10 divided by 3 is 3 with a remainder of 1." },
+                    { q: "Q3: Given vals = [2.0, 4.0, 6.0], what is the list after vals[1] = 9.0?", opts: ["A) [2.0, 9.0, 6.0]", "B) [9.0, 4.0, 6.0]", "C) [2.0, 4.0, 9.0]", "D) IndexError"], 
+                     ans: "A", hint: "List elements are mutable and reassignable by index.", exp: "Index 1 refers to the second element (4.0), changing it to 9.0." },
                     { q: "Q4: Given nums = [5, 10, 15, 20, 25], what does nums[1:3] return?", opts: ["A) [10, 15]", "B) [5, 10, 15]", "C) [15, 20]", "D) [10, 15, 20]"], ans: "A", hint: "Slicing [start:stop] includes start up to, but not including, stop.", exp: "Indices 1 and 2 give 10 and 15." },
                     { q: "Q5: What is the result of [1.0, 2.0] + [3.0, 4.0]?", opts: ["A) [4.0, 6.0]", "B) [1.0, 2.0, 3.0, 4.0]", "C) [[1.0, 2.0], [3.0, 4.0]]", "D) TypeError"], ans: "B", hint: "The + operator concatenates lists together.", exp: "List addition joins the elements sequentially into a single larger list." },
                     { q: "Q6: What does 20 in [10, 20, 30] evaluate to?", opts: ["A) True", "B) False", "C) 20", "D) TypeError"], ans: "A", hint: "The in operator checks for membership.", exp: "20 is present in the list, returning True." },
@@ -115,7 +118,7 @@
                     { q: "Q9: Why does print('Value: ' + 5) raise a TypeError?", opts: ["A) Strings need double quotes", "B) Python does not allow implicit conversion between strings and ints", "C) print is invalid", "D) Plus sign requires numbers on both sides"], ans: "B", hint: "Numbers must be explicitly converted to strings.", exp: "You must use str(5) before adding it to a string." },
                     { q: "Q10: Final value of x?\n\nx = 4.0\nx = x * 3.0\nx = x - 2.0", opts: ["A) 10.0", "B) 6.0", "C) 12.0", "D) 4.0"], ans: "A", hint: "Evaluate line by line.", exp: "4.0 * 3.0 = 12.0, then 12.0 - 2.0 = 10.0." }
                 ]
-            }
+            },
             b2: {
                 title: "Batch 2: Loops & Functions",
                 desc: "For/while loops, parameters, return statements, and scope.",
